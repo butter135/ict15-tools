@@ -1,0 +1,27 @@
+# Go build
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Build output
+/build/
+/bin/
+/dist/
+
+# Vendor dir (if not vendoring)
+vendor/
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+
+# Docker-related
+*.env
+.env.*
+docker-compose.override.yml
+.docker/
