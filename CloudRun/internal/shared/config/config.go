@@ -3,11 +3,13 @@ package config
 import "os"
 
 var (
-	TokenDice string
+	DiceVerifyToken string // 受信時の検証用トークン
+	DiceWebhookURL  string // 送信用Webhookのエンドポイント
 )
 
 func Init(){
-	TokenDice = mustGetenv("TOKEN_DICE")
+	DiceVerifyToken = mustGetenv("DICE_VERIFY_TOKEN")
+	DiceWebhookURL = mustGetenv("DICE_WEBHOOK_URL")
 }
 
 func mustGetenv(key string) string{

@@ -2,10 +2,11 @@ package api
 
 import (
 	"encoding/json"
+	"github.com/butter135/ict15-tools/CloudRun/internal/shared/message_sender"
 	"net/http"
 
 	"github.com/butter135/ict15-tools/CloudRun/internal/shared/config"
-	"github.com/butter135/ict15-tools/CloudRun/internal/dice/usecase"
+	"github.com/butter135/ict15-tools/CloudRun/internal/dice"
 )
 
 type DiceRequest struct{
@@ -21,15 +22,28 @@ func HandleDiceRoll(w http.ResponseWriter, r *http.Request){
 		return
 	}
 
-	if req.Token != config.TokenDice{
+	if req.Token != config.DiceVerifyToken{
 		http.Error(w, "Unautorized", http.StatusUnauthorized)
 	}
 
-	message, err := usecase.PlayDice(req.Text)
+	message, err := dice.PlayDice(req.Text)
 	if err != nil{
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
 	}
 
-	w.Write([]byte(message))
+	payload := message_sender.Payload{
+		Message: message,
+		WebhookURL: config.DiceWebhookURL,
+	}
+
+	err = message_sender.NewWebhookSeder().Send(payload)
+
+	if err != nil{
+		http.Error(w, "failed to send message", http.StatusInternalServerError)
+		return
+	}
+
+	w.WriteHeader(http.StatusOK)
+	w.Write([]byte("OK"))
 }
