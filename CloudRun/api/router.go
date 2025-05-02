@@ -11,6 +11,7 @@ func NewRouter() http.Handler{
 	r.Use(middleware.NormalizeInput) // ← ここで先に成型！
 
 	r.HandleFunc("/dice", HandleDiceRoll).Methods("POST")
+	r.HandleFunc("/picchan", HandlePicChan).Methods("POST")
 
 	//r.HandleFuncで追加してく
 	return r
