@@ -13,6 +13,11 @@ var (
 	PicChanVerifyToken string
 	PicChanBotToken string
 
+	TokumeiVerifyToken1 string
+	TokumeiVerifyToken2 string
+	TokumeiChannelID string
+	TokumeiBotToken string
+
 )
 
 func Init(){
@@ -23,8 +28,10 @@ func Init(){
 	DiceWebhookURL = mustGetenv("DICE_WEBHOOK_URL")
 	PicChanVerifyToken = mustGetenv("PICCHAN_VERIFY_TOKEN")
 	PicChanBotToken = mustGetenv("PICCHAN_BOT_TOKEN")
-
-
+	TokumeiVerifyToken1 = mustGetenv("TOKUMEI_VERIFY_TOKEN1")
+	TokumeiVerifyToken2 = mustGetenv("TOKUMEI_VERIFY_TOKEN2")
+	TokumeiChannelID = mustGetenv("TOKUMEI_CHANNEL_ID")
+	TokumeiBotToken = mustGetenv("TOKUMEI_BOT_TOKEN")
 }
 
 func mustGetenv(key string) string{

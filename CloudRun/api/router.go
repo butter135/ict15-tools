@@ -12,6 +12,7 @@ func NewRouter() http.Handler{
 
 	r.HandleFunc("/dice", HandleDiceRoll).Methods("POST")
 	r.HandleFunc("/picchan", HandlePicChan).Methods("POST")
+	r.HandleFunc("/tokumei", HandleTokumei).Methods("POST")
 
 	//r.HandleFuncで追加してく
 	return r
