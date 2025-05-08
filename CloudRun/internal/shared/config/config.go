@@ -18,6 +18,9 @@ var (
 	TokumeiChannelID string
 	TokumeiBotToken string
 
+	TwiFixVerifyToken1 string
+	TwiFixVerifyToken2 string
+	TwiFixBotToken string
 )
 
 func Init(){
@@ -32,6 +35,9 @@ func Init(){
 	TokumeiVerifyToken2 = mustGetenv("TOKUMEI_VERIFY_TOKEN2")
 	TokumeiChannelID = mustGetenv("TOKUMEI_CHANNEL_ID")
 	TokumeiBotToken = mustGetenv("TOKUMEI_BOT_TOKEN")
+	TwiFixVerifyToken1 = mustGetenv("TWIFIX_VERIFY_TOKEN1")
+	TwiFixVerifyToken2 = mustGetenv("TWIFIX_VERIFY_TOKEN2")
+	TwiFixBotToken = mustGetenv("TWIFIX_BOT_TOKEN")
 }
 
 func mustGetenv(key string) string{
