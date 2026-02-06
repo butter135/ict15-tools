@@ -11,7 +11,7 @@ func CreateMessage(tweetURL, username string) (string, error) {
 		return "", err
 	}
 	message := fmt.Sprintf(
-		"**%s**\n%s\n[![image](%s)](%s)\n[ツイートを見る](%s)\nfrom: %s",
+		"**%s**\n%s\n\n[![image](%s)](%s)\n[ツイートを見る](%s)\nfrom: %s",
 		name,
 		desc,
 		image,
